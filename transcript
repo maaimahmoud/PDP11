@@ -1,0 +1,28 @@
+# do {.\mydo.do}
+# vsim -gui work.myArchitecture 
+# Start time: 12:05:29 on Dec 07,2018
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.math_real(body)
+# Loading work.myarchitecture(amyarchitecture)
+# Loading work.regfile(a_regfile)
+# Loading work.decoder2x4(a_decoder)
+# Loading work.reg(a_reg)
+# Loading work.specialreg(aspecialreg)
+# Loading work.decoder1x2(adecoder1x2)
+# Loading work.tristate(a_tristate)
+# Loading ieee.numeric_std(body)
+# Loading work.ram(syncrama)
+# ** Error: Value length (4) does not equal array index length (32).
+# 
+# ** Error: (vsim-4011) Invalid force value: 7777 0.
+# Error in macro ././mydo.do line 7
+# Value length (4) does not equal array index length (32).
+# 
+# ** Error: (vsim-4011) Invalid force value: 7777 0.
+# 
+#     while executing
+# "force -freeze sim:/myArchitecture/myBus 7777 0"
+# End time: 12:05:39 on Dec 07,2018, Elapsed time: 0:00:10
+# Errors: 2, Warnings: 0

@@ -1,0 +1,12 @@
+# do and.do
+# vsim -gui work.andGate 
+# Start time: 16:18:45 on Dec 12,2018
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.mine(body)
+# Loading work.andgate(aand)
+# Loading work.and2(aand2)
+# End time: 16:19:55 on Dec 12,2018, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 0

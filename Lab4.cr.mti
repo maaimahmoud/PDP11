@@ -1,0 +1,104 @@
+{S:/3A/Architecture/Lab4/My Lab/myArchitecture.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/myArchitecture.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity myArchitecture
+-- Compiling architecture amyArchitecture of myArchitecture
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/decoder1x2.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/decoder1x2.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity decoder1x2
+-- Compiling architecture aDecoder1x2 of decoder1x2
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/and2.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/and2.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity and2
+-- Compiling architecture and_a of and2
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/tristatebuffer.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/tristatebuffer.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity tristate
+-- Compiling architecture a_tristate of tristate
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/regFile.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/regFile.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity regFile
+-- Compiling architecture a_regFile of regFile
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/reg.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity reg
+-- Compiling architecture a_reg of reg
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/mypackage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/mypackage.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package MyPackage
+-- Compiling package body MyPackage
+-- Loading package MyPackage
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/specialReg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/specialReg.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity specialReg
+-- Compiling architecture aspecialReg of specialReg
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/decoder2x4.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/decoder2x4.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity decoder2x4
+-- Compiling architecture a_decoder of decoder2x4
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/testbench.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/testbench.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MyPackage
+-- Compiling entity testbench
+-- Compiling architecture testbench_a of testbench
+-- Compiling architecture testbench_b of testbench
+-- Loading entity testbench
+-- Compiling architecture testbench_c of testbench
+-- Loading entity testbench
+
+} {} {}} {S:/3A/Architecture/Lab4/My Lab/ram.vhd} {1 {vcom -work work -2002 -explicit -stats=none {S:/3A/Architecture/Lab4/My Lab/ram.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ram
+-- Compiling architecture syncrama of ram
+
+} {} {}}
