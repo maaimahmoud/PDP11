@@ -19,24 +19,19 @@ END nAdder;
 
 ARCHITECTURE aNAdder OF nAdder IS
 
-  COMPONENT adder IS
-        PORT( 
-            a,b,cin : IN std_logic;
-            s,cout : OUT std_logic
-           );
-    END COMPONENT;
+
 
 SIGNAL temp : std_logic_vector(n-1 DOWNTO 0);
 
 BEGIN
 
-      f0: adder PORT MAP(a(0),b(0),carryIn,sum(0),temp(0));
+      f0: entity work.adder PORT MAP(a(0),b(0),carryIn,sum(0),temp(0));
 
 
       loop1: FOR i IN 1 TO n-1
       GENERATE
             
-          fx: adder PORT MAP  (a(i),b(i),temp(i-1),sum(i),temp(i));
+          fx: entity work.adder PORT MAP  (a(i),b(i),temp(i-1),sum(i),temp(i));
 
       END GENERATE;
         

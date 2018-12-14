@@ -1,6 +1,6 @@
 # do {DO FILES\regfile.do}
 # vsim -gui work.regfile 
-# Start time: 19:39:27 on Dec 14,2018
+# Start time: 21:54:28 on Dec 14,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -11,5 +11,5 @@
 # Loading work.decoder(adecoder)
 # Loading work.reg(areg)
 # Loading work.tristate(a_tristate)
-# End time: 20:02:16 on Dec 14,2018, Elapsed time: 0:22:49
+# End time: 22:00:17 on Dec 14,2018, Elapsed time: 0:05:49
 # Errors: 0, Warnings: 0
