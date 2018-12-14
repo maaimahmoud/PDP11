@@ -1,23 +1,15 @@
-# do {.\DO FILES\alu.do}
-# vsim -gui work.alu 
-# Start time: 11:44:25 on Dec 14,2018
+# do {DO FILES\regfile.do}
+# vsim -gui work.regfile 
+# Start time: 19:39:27 on Dec 14,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.mine(body)
 # Loading ieee.math_real(body)
-# Loading work.alu(aalu)
-# Loading work.twocomp(a_twocomp)
-# Loading work.nadder(anadder)
-# Loading work.adder(aadder)
+# Loading work.mine(body)
 # Loading ieee.numeric_std(body)
-# Loading work.mux(amux)
+# Loading work.regfile(aregfile)
+# Loading work.decoder(adecoder)
 # Loading work.reg(areg)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /alu/muxMap
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /alu/muxMapB
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /alu/muxMapA
-# End time: 11:55:48 on Dec 14,2018, Elapsed time: 0:11:23
-# Errors: 0, Warnings: 3
+# Loading work.tristate(a_tristate)
+# End time: 20:02:16 on Dec 14,2018, Elapsed time: 0:22:49
+# Errors: 0, Warnings: 0

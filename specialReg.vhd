@@ -10,7 +10,7 @@ ENTITY specialReg IS
         src_en,dst_en : IN std_logic;
         rst: IN std_logic_vector(1 downto 0);
         clk: IN std_logic ;
-	ramClk: IN std_logic;
+	    ramClk: IN std_logic;
         myBus : INOUT std_logic_vector(m-1 DOWNTO 0) 
         );
 

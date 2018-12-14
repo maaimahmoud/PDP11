@@ -125,7 +125,7 @@ BEGIN
                                                     selectionLines=>selectionLines,
                                                     output=>inA);
 
-    muxMapB : MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=>x"0", -- A
+    muxMapB : MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=>x"0000", -- A
                                                     inputs(1)=>B, -- A+B
                                                     inputs(2)=>B, -- A+B+carry
                                                     inputs(3)=>Bbar, -- A-B
@@ -134,8 +134,8 @@ BEGIN
                                                     inputs(6)=>B, -- A OR B
                                                     inputs(7)=>B, -- A XNOR B
                                                     inputs(8)=>Bbar, -- A-B
-                                                    inputs(9)=>x"0", -- A + 1
-                                                    inputs(10)=>x"F", -- A - 1
+                                                    inputs(9)=>x"0000", -- A + 1
+                                                    inputs(10)=>x"FFFF", -- A - 1
                                                     inputs(11)=>B, -- 0
                                                     inputs(12)=>B, -- NOT A
                                                     inputs(13)=>B,-- SHR
@@ -165,7 +165,7 @@ BEGIN
                                                     inputs(8)=>adderOut, -- A-B
                                                     inputs(9)=>adderOut, -- A + 1
                                                     inputs(10)=>adderOut, -- A - 1
-                                                    inputs(11)=>x"0", -- 0
+                                                    inputs(11)=>x"0000", -- 0
                                                     inputs(12)=>notA, -- NOT A
                                                     inputs(13)=>A,-- SHR
                                                     inputs(14)=>A,-- ROR

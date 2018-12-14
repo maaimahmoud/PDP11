@@ -9,7 +9,6 @@ USE work.mine;
 ENTITY MUX IS
     
             GENERIC (inputNum : integer := 2 ; wordSize : integer := 16); -- Number of inputs to MUX and word Size of each
-            
         PORT(
                 inputs : IN  mine.genericArrayofVector16bit(0 to inputNum-1);
                 selectionLines : IN std_logic_vector (integer(ceil(log2(real(inputNum))))-1 downto 0);
