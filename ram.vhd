@@ -3,7 +3,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.numeric_std.all;
 
 ENTITY ram IS
-		GENERIC (m : integer := 32);
+		GENERIC (m : integer := 16);
 	PORT(
 		clk : IN std_logic;
 		en  : IN std_logic;

@@ -1,15 +1,67 @@
-# do {DO FILES\regfile.do}
-# vsim -gui work.regfile 
-# Start time: 21:54:28 on Dec 14,2018
+# do {DO FILES\myArchitecture.do}
+# vsim -gui work.myArchitecture 
+# Start time: 00:14:09 on Dec 15,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.math_real(body)
 # Loading work.mine(body)
 # Loading ieee.numeric_std(body)
+# Loading work.myarchitecture(amyarchitecture)
 # Loading work.regfile(aregfile)
 # Loading work.decoder(adecoder)
 # Loading work.reg(areg)
 # Loading work.tristate(a_tristate)
-# End time: 22:00:17 on Dec 14,2018, Elapsed time: 0:05:49
-# Errors: 0, Warnings: 0
+# Loading work.ram(syncrama)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/ramMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
+# End time: 00:46:01 on Dec 15,2018, Elapsed time: 0:31:52
+# Errors: 0, Warnings: 25
