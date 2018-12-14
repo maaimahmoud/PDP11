@@ -7,7 +7,7 @@ ENTITY nAdder IS
   PORT(
       a,b : IN std_logic_vector(n-1  DOWNTO 0);
       carryIn : IN std_logic;
-      s : OUT std_logic_vector(n-1 DOWNTO 0);
+      sum : OUT std_logic_vector(n-1 DOWNTO 0);
       carryOut : OUT std_logic
     );
 
@@ -19,21 +19,24 @@ END nAdder;
 
 ARCHITECTURE aNAdder OF nAdder IS
 
-  COMPONENT my_adder IS
-        PORT( a,b,carryIn : IN std_logic; s,carryOut : OUT std_logic);
+  COMPONENT adder IS
+        PORT( 
+            a,b,cin : IN std_logic;
+            s,cout : OUT std_logic
+           );
     END COMPONENT;
 
 SIGNAL temp : std_logic_vector(n-1 DOWNTO 0);
 
 BEGIN
 
-      f0: my_adder PORT MAP(a(0),b(0),carryIn,s(0),temp(0));
+      f0: adder PORT MAP(a(0),b(0),carryIn,sum(0),temp(0));
 
 
       loop1: FOR i IN 1 TO n-1
       GENERATE
             
-          fx: my_adder PORT MAP  (a(i),b(i),temp(i-1),s(i),temp(i));
+          fx: adder PORT MAP  (a(i),b(i),temp(i-1),sum(i),temp(i));
 
       END GENERATE;
         
