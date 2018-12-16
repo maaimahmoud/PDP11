@@ -40,6 +40,11 @@ ENTITY myArchitecture IS
         -- BUSES
             busB : INOUT std_logic_vector(wordSize-1 DOWNTO 0); -- OutputBus
             busA : INOUT std_logic_vector(wordSize-1 DOWNTO 0)  -- Bi-Directionl Bus
+			
+		-- IR, Y , TEMP enables and resets.
+			IREn,IRRst,YREn,YRRst,TempEn,,TempRst: IN std_logic;
+		-- OUT SIGNALS FOR Y,Temp and IR.
+			yOut,tempOut,irOut : IN STD_LOGIC;
     );
 
 END myArchitecture;
@@ -74,6 +79,12 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
             -- ROM PARAMETERS
                 SIGNAL mircoAR : STD_LOGIC_VECTOR (integer(ceil(log2(real(127))))-1 DOWNTO 0);
                 SIGNAL ramOut : STD_LOGIC_VECTOR (23 DOWNTO 0);
+				
+				
+			-- SPECIAL REGISTERS 
+			IRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,IREn,IRRst,clk,IRout);
+			YRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,YREn,YRRst,clk,YRout);
+			TempRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP(busA,TempEn,TempRst,clk,TempRout);
     ------------------------------
 
 
@@ -111,7 +122,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
                 else memoryOut;
 
 
-                -- dstDecodMap: entity work.decoder GENERIC MAP(1) PORT MAP (specialRegDstA,specialRegDstEnA,DstDecoded);
+        -- dstDecodMap: entity work.decoder GENERIC MAP(1) PORT MAP (specialRegDstA,specialRegDstEnA,DstDecoded);
             
             
         -- Detect Which Register will output on bus
@@ -128,11 +139,19 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
             tristateMapMAR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MARout,SrcDecodedA(0),busA);
 
             tristateMapMDR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MDRout,SrcDecodedA(1),busA);
-
-            --   busA <= MARout when SrcDecoded(0) = '1'
+		
+		-- Special Registers Tri-states 
+	
+			tristateMapIR : entity work.tristate GENERIC MAP(wordSize) PORT MAP(IRout,irOut,busA);
+			
+			tristateMapTemp : entity work.tristate GENERIC MAP (wordSize) PORT MAP(TempRout,tempOut,busA);
+			
+			tristateMapYR : entity work.tristate GENERIC MAP (wordSize) PORT MAP(YRout,yOut,busA);
+           
+		   --   busA <= MARout when SrcDecoded(0) = '1'
             --   else MDRout when SrcDecoded(1) = '1'
             --   else (others=>'Z');
-
+		-- 
         ramMap: entity work.ram GENERIC MAP (wordSize) PORT MAP (ramClk,writeEn,MARout,MDRout,memoryOut);
 
         romMap: entity work.rom GENERIC MAP (24) PORT MAP (mircoAR,ramOut);
