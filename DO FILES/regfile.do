@@ -1,6 +1,6 @@
 vsim -gui work.regfile
 add wave sim:/regfile/*
-force -freeze sim:/regfile/clk 1 0, 0 {25 ps} -r 50
+force -freeze sim:/regfile/clk 0 0, 1 {50 ps} -r 100
 
 force -freeze sim:/regfile/rst 16#FF 0
 force -freeze sim:/regfile/dstEnA 16#0 0

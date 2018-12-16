@@ -6,7 +6,7 @@ USE IEEE.numeric_std.all;
 -- Decoder Entity
 
 ENTITY decoder IS
-    GENERIC (n : integer := 3); --N : Number of selection Lines
+        GENERIC (n : integer := 3); --N : Number of selection Lines
     PORT(
             T : IN std_logic_vector(n-1  DOWNTO 0); 
             en:IN std_logic;

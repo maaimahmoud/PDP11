@@ -1,6 +1,6 @@
 # do {DO FILES\myArchitecture.do}
 # vsim -gui work.myArchitecture 
-# Start time: 00:14:09 on Dec 15,2018
+# Start time: 03:12:31 on Dec 16,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -13,6 +13,9 @@
 # Loading work.reg(areg)
 # Loading work.tristate(a_tristate)
 # Loading work.ram(syncrama)
+# Loading work.rom(arom)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/romMap
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/ramMap
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -63,5 +66,5 @@
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(1)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
-# End time: 00:46:01 on Dec 15,2018, Elapsed time: 0:31:52
-# Errors: 0, Warnings: 25
+# End time: 03:12:59 on Dec 16,2018, Elapsed time: 0:00:28
+# Errors: 0, Warnings: 26
