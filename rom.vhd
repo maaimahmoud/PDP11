@@ -9,7 +9,7 @@ ENTITY rom IS
 
             GENERIC (m : integer := 24);
         PORT(
-                address : IN  std_logic_vector(integer(ceil(log2(real(127))))-1 DOWNTO 0);
+                address : IN  std_logic_vector(integer(ceil(log2(real(64))))-1 DOWNTO 0);
                 dataout : OUT std_logic_vector(m-1 DOWNTO 0)
             );
 
@@ -21,7 +21,7 @@ END ENTITY rom;
 
 ARCHITECTURE arom OF rom IS
 
-    TYPE romType IS ARRAY(0 TO 127) OF std_logic_vector(m-1 DOWNTO 0);
+    TYPE romType IS ARRAY(0 TO 64) OF std_logic_vector(m-1 DOWNTO 0);
 
 SIGNAL rom : romType ;
 

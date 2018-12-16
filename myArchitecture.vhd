@@ -72,7 +72,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
                 SIGNAL enMDR : STD_LOGIC;
 
             -- ROM PARAMETERS
-                SIGNAL mircoAR : STD_LOGIC_VECTOR (integer(ceil(log2(real(127))))-1 DOWNTO 0);
+                SIGNAL mircoAR : STD_LOGIC_VECTOR (integer(ceil(log2(real(64))))-1 DOWNTO 0);
                 SIGNAL ramOut : STD_LOGIC_VECTOR (23 DOWNTO 0);
     ------------------------------
 
