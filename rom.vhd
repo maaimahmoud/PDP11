@@ -1,30 +1,30 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.numeric_std.all;
-USE IEEE.math_real.all;
-
--- ROM Entity
 
 ENTITY rom IS
-
-            GENERIC (m : integer := 24);
-        PORT(
-                address : IN  std_logic_vector(integer(ceil(log2(real(64))))-1 DOWNTO 0);
-                dataout : OUT std_logic_vector(m-1 DOWNTO 0)
-            );
-
+	PORT(
+		clk : IN std_logic;
+		we  : IN std_logic; --set when read op
+		address : IN  std_logic_vector(5 DOWNTO 0);
+		dataout : OUT std_logic_vector(23 DOWNTO 0));
 END ENTITY rom;
 
-------------------------------------------------------------
+ARCHITECTURE syncromo OF rom IS
 
--- ROM Architecture
+	TYPE rom_type IS ARRAY(0 TO 63) OF std_logic_vector(23 DOWNTO 0);
+	SIGNAL rom : rom_type;
 
-ARCHITECTURE arom OF rom IS
+	
+	BEGIN
+		PROCESS(clk) IS
+			BEGIN
+				IF falling_edge(clk) THEN  
+					IF we = '1' THEN
+                    dataout <= rom(to_integer(unsigned(address)));
+					END IF;
+				END IF;
+		END PROCESS;
+	
+END syncromo;
 
-    TYPE romType IS ARRAY(0 TO 64) OF std_logic_vector(m-1 DOWNTO 0);
-
-SIGNAL rom : romType ;
-
-    BEGIN
-            dataout <= rom(to_integer(unsigned(address)));
-END arom;
