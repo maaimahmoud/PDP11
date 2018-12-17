@@ -6,10 +6,12 @@ USE IEEE.math_real.all;
 entity ALU is
     GENERIC (wordSize : integer := 16);
   port(
-      A, B:in std_logic_vector(wordSize-1 downto 0);
+      B: in std_logic_vector(wordSize-1 downto 0);
+      A: INOUT STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
       selectionLines:in std_logic_vector(4 downto 0);
       clk:in std_logic;
-      resetFlag: in std_logic;
+      flagRegEn,flagRegSrc,flagRegDstEnA,resetFlag : in STD_LOGIC;
+      flagRegValue : OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
       busB :out std_logic_vector(wordSize-1 downto 0)
     );
 
@@ -20,8 +22,10 @@ architecture aALU of ALU is
 
 
     SIGNAL flagRegT:std_logic_vector( 4 downto 0) ;
+    SIGNAL flagRegFinalT:std_logic_vector( 4 downto 0) ;
     SIGNAL flagRegOut:std_logic_vector(4 downto 0) ;
-    SIGNAL flagRegEn: std_logic ;
+
+    -- SIGNAL flagRegEn: std_logic ;
 
     -- Flag Register Bits
     SIGNAL N: std_logic:= '0' ;
@@ -111,7 +115,7 @@ BEGIN
                                                     inputs(6)=>B, -- A OR B
                                                     inputs(7)=>B, -- A XNOR B
                                                     inputs(8)=>Bbar, -- A-B
-                                                    inputs(9)=>x"0000", -- A + 1
+                                                    inputs(9)=>x"0001", -- A + 1
                                                     inputs(10)=>x"FFFF", -- A - 1
                                                     inputs(11)=>B, -- 0
                                                     inputs(12)=>B, -- NOT A
@@ -155,7 +159,7 @@ BEGIN
                                                     output=>aluOutput);
                                                   
   busB <= aluOutput;
-
+-- B <= 
 
   Z <= '1' when aluOutput = x"0000"
   else '0';
@@ -180,10 +184,16 @@ BEGIN
   flagRegT(3) <= C;
   flagRegT(4) <= P;
 
-  flagRegEn <= '1';
+--   flagRegEn <= '1';
 
-  flagRegMap: entity work.reg GENERIC MAP(5) PORT MAP(flagRegT,flagRegEn,resetFlag,clk,flagRegOut );
+    flagRegFinalT <= B when flagRegDstEnA='1'
+    else flagRegT;
 
+  flagRegMap: entity work.reg GENERIC MAP(5) PORT MAP(flagRegFinalT,flagRegEn,resetFlag,clk,flagRegOut );
 
+    A <= flagRegOut when flagRegSrc = '1'
+    else (OTHERS=>'Z');
+
+    flagRegValue <= flagRegOut;
 
 end architecture;

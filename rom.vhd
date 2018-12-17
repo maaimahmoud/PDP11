@@ -19,7 +19,7 @@ ARCHITECTURE syncromo OF rom IS
 	BEGIN
 		PROCESS(clk) IS
 			BEGIN
-				IF falling_edge(clk) THEN  
+				IF rising_edge(clk) THEN  
 					IF we = '1' THEN
                     dataout <= rom(to_integer(unsigned(address)));
 					END IF;

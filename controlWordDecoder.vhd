@@ -7,16 +7,11 @@ ENTITY ControlWordDecoder IS
 
     PORT(
 
-        -- INPUT FROM IR
-            OPCODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0); -- 4 bits for instruction OPCODE
-            NEXTOPCODE : IN STD_LOGIC_VECTOR(3 DOWNTO 0); -- NEXT 4 bits for instruction OPCODE ( 1-OPERAND )
-            srcReg : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits for source register
-            dstReg : IN STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits for destination register
+        -- IR
+            IRout : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
 
         -- INPUTS FROM CONTROL WORD
-            F0 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-            F1,F5,F6,F7  : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-            F2,F3,F4 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            romOut : IN STD_LOGIC_VECTOR (23 DOWNTO 0);
 
         -- OUTPUTS FROM DECODING CIRCUTS
 
@@ -40,7 +35,7 @@ ENTITY ControlWordDecoder IS
             -- IR REGISTER
                 IRRegEn : OUT STD_LOGIC ; -- Save value on BUS A in IR resgister
                 IRAddressOut : OUT STD_LOGIC ; -- Out Address-Field-of-IR on BUS A
-                checkFlagReg : OUT STD_LOGIC ;
+                -- checkFlagReg : OUT STD_LOGIC ;
                 
             -- REGISTERS
                 -- BUS WRITE TO REGISTER
@@ -62,7 +57,7 @@ ENTITY ControlWordDecoder IS
             
             
             -- REGISTERS RESET
-                regRst:OUT STD_LOGIC_VECTOR(15 DOWNTO 0); --(2**regNum)-1
+                regRst:OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --(2**regNum)-1
                 specialRegRst:OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 
             -- READ AND WRITE FROM/TO MEMORY
@@ -77,16 +72,27 @@ END ControlWordDecoder;
 
 ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
     
+        -- Divide IR
+            SIGNAL OPCODE : STD_LOGIC_VECTOR(4 DOWNTO 0); -- 4 bits for instruction OPCODE
+            SIGNAL NEXTOPCODE : STD_LOGIC_VECTOR(4 DOWNTO 0); -- NEXT 4 bits for instruction OPCODE ( 1-OPERAND )
+            SIGNAL srcReg : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits for source register
+            SIGNAL dstReg : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 3 bits for destination register
+        
+
+        -- Divide Control word to Fs
+            SIGNAL F0 : STD_LOGIC;
+            SIGNAL F1,F5,F6  : STD_LOGIC_VECTOR(1 DOWNTO 0);
+            SIGNAL F2,F3,F4 : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
         --SIGNALS OF SPECIAL REGISTERS
-            SIGNAL F0DECODED: STD_LOGIC_VECTOR (1 DOWNTO 0);
+            -- SIGNAL F0DECODED: STD_LOGIC_VECTOR (1 DOWNTO 0);
             SIGNAL F1DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
             SIGNAL F2DECODED: STD_LOGIC_VECTOR (7 DOWNTO 0);
             SIGNAL F3DECODED: STD_LOGIC_VECTOR (7 DOWNTO 0);
             SIGNAL F4DECODED: STD_LOGIC_VECTOR (7 DOWNTO 0);
             SIGNAL F5DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
             SIGNAL F6DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
-            SIGNAL F7DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
+            -- SIGNAL F7DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
             
 
 
@@ -96,22 +102,37 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
         -- ALU PARAMETERS
             SIGNAL aluUsed : STD_LOGIC;
-            SIGNAL adderOut : STD_LOGIC_VECTOR(3 DOWNTO 0);
+            SIGNAL adderOut : STD_LOGIC_VECTOR(4 DOWNTO 0);
             SIGNAL adderCarryOut : STD_LOGIC;
 
         ------------------------------
 
 
   BEGIN
+
+            OPCODE <= '0'&IRout(15 DOWNTO 12);
+            NEXTOPCODE <= '0'&IRout(11 DOWNTO 8);
+            srcReg <= IRout(8 DOWNTO 6);
+            dstReg <= IRout(2 DOWNTO 0);
+        
+
+            F0 <= romOut(23);
+            F1 <= romOut(22 DOWNTO 21);
+            F2 <= romOut(20 DOWNTO 18);
+            F3 <= romOut(17 DOWNTO 15);
+            F4 <= romOut(14 DOWNTO 12);
+            F5 <= romOut(11 DOWNTO 10);
+            F6 <= romOut(9 DOWNTO 8);
+            
         -- Decoder for every F
-            F0DECODERMAP: entity work.DECODER GENERIC MAP( 1 ) PORT MAP ( F0,'1',F0DECODED );
+            -- F0DECODERMAP: entity work.DECODER GENERIC MAP( 1 ) PORT MAP ( F0,'1',F0DECODED );
             F1DECODERMAP: entity work.DECODER GENERIC MAP( 2 ) PORT MAP ( F1,'1',F1DECODED );
             F2DECODERMAP: entity work.DECODER GENERIC MAP( 3 ) PORT MAP ( F2,'1',F2DECODED );
             F3DECODERMAP: entity work.DECODER GENERIC MAP( 3 ) PORT MAP ( F3,'1',F3DECODED );
             F4DECODERMAP: entity work.DECODER GENERIC MAP( 3 ) PORT MAP ( F4,'1',F4DECODED );
             F5DECODERMAP: entity work.DECODER GENERIC MAP( 2 ) PORT MAP ( F5,'1',F5DECODED );
             F6DECODERMAP: entity work.DECODER GENERIC MAP( 2 ) PORT MAP ( F6,'1',F6DECODED );
-            F7DECODERMAP: entity work.DECODER GENERIC MAP( 2 ) PORT MAP ( F7,'1',F7DECODED );
+            -- F7DECODERMAP: entity work.DECODER GENERIC MAP( 2 ) PORT MAP ( F7,'1',F7DECODED );
 
         ------------------------------------------------------------------------------------------------------------------------
         -- F0 Decode
@@ -134,9 +155,9 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
                             else "110" when (F1DECODED(2)='1' AND aluUsed = '0' ) --SPin and NO ALU operaion
                 
-                            else srcReg when (F1DECODED(3)='1' AND aluUsed = '0'  AND F0DECODED(0) = '1' ) --Rsrc and NO ALU operaion
+                            else srcReg when (F1DECODED(3)='1' AND aluUsed = '0'  AND F0 = '0' ) --Rsrc and NO ALU operaion
 
-                            else dstReg when (F1DECODED(3)='1' AND aluUsed = '0'  AND F0DECODED(1) = '1' ); --Rdst and NO ALU operaion
+                            else dstReg when (F1DECODED(3)='1' AND aluUsed = '0'  AND F0 = '1' ); --Rdst and NO ALU operaion
             
                 -- Write From BUS B if ALU operation is needed
                         regDstEnB <= '1' when ( (F1DECODED(1)='1' OR F1DECODED(2)='1' OR F1DECODED(3)='1') AND aluUsed = '1' )
@@ -147,9 +168,9 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
                                 else "110" when (F1DECODED(2)='1' AND aluUsed = '1' ) --SPin and NO ALU operaion
                     
-                                else srcReg when (F1DECODED(3)='1' AND aluUsed = '1'  AND F0DECODED(0) = '1' ) --Rsrc and NO ALU operaion
+                                else srcReg when (F1DECODED(3)='1' AND aluUsed = '1'  AND F0 = '0' ) --Rsrc and NO ALU operaion
 
-                                else dstReg when (F1DECODED(3)='1' AND aluUsed = '1'  AND F0DECODED(1) = '1' ); --Rdst and NO ALU operaion
+                                else dstReg when (F1DECODED(3)='1' AND aluUsed = '1'  AND F0 = '1' ); --Rdst and NO ALU operaion
             
 
             
@@ -168,9 +189,9 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
                         else "110" when F2DECODED(2) = '1' --SPout
             
-                        else srcReg when (F2DECODED(3) = '1' AND F0DECODED(0) = '1' ) --Rsrc(out)
+                        else srcReg when (F2DECODED(3) = '1' AND F0 = '0' ) --Rsrc(out)
 
-                        else dstReg when (F2DECODED(3) = '1' AND F0DECODED(1) = '1' ); --Rdst(out)
+                        else dstReg when (F2DECODED(3) = '1' AND F0 = '1' ); --Rdst(out)
         
             -- Enable write Values in Special Registers In Case of (MDRout)
 
@@ -195,15 +216,15 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
             IRAddressOut <= F3DECODED(6);
 
-            checkFlagReg <= F3DECODED(7);
+            -- checkFlagReg <= F3DECODED(7);
 
         ------------------------------------------------------------------------------------------------------------------------
         -- F4 Decode
-            adderMap: entity work.nAdder generic map(4) PORT MAP(OPCODE,NEXTOPCODE,'0',adderOut,adderCarryOut);  
+            adderMap: entity work.nAdder generic map(5) PORT MAP(OPCODE,NEXTOPCODE,'0',adderOut,adderCarryOut);  
 
-            aluOperation <= "1001" when F4DECODED(1) = '1'
-            else "1010" when  F4DECODED(2) = '1'
-            else "0001" when  F4DECODED(3) = '1'
+            aluOperation <= "01001" when F4DECODED(1) = '1'
+            else "01010" when  F4DECODED(2) = '1'
+            else "00001" when  F4DECODED(3) = '1'
             else adderOut when OPCODE="1001"
             else OPCODE;
 

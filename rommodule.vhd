@@ -12,7 +12,7 @@ end romModule;
 
 
 architecture rom of romModule is
-    component reg is
+    component reg2 is
         generic(n:integer :=6);
         port(clk,rst,en: in std_logic;
             d: in std_logic_vector(n-1 downto 0);
@@ -39,7 +39,7 @@ architecture rom of romModule is
     begin
 
         ro:rom port map(clk,en,addr,rom_o);
-        mar: reg port map(clk,rst,en,address_field,addr);
+        mar: reg2 port map(clk,rst,en,address_field,addr);
         oring<= rom_o(7 downto 6);
         rom_out<=rom_o;
         opcode<=ir(15 downto 12);
