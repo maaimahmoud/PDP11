@@ -7,7 +7,7 @@ use IEEE.math_real.all;
 
 ENTITY myArchitecture IS
 
-        GENERIC(regNum: integer := 3;wordSize :integer := 16);
+        GENERIC(regNum: integer := 3;wordSize :integer := 16); -- Log number of register - word size
     PORT(
         -- REGISTERS
             -- BUS WRITE TO REGISTER
@@ -33,6 +33,19 @@ ENTITY myArchitecture IS
        -- READ AND WRITE FROM/TO MEMORY
            writeEn,readEn : IN STD_LOGIC;
 
+        -- IR Register
+            IREn,IRRst,IRSrc : IN STD_LOGIC;
+            -- irOut : OUT STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+
+        -- Y Register
+            YREn,YRRst,YSrc: IN STD_LOGIC;
+            -- yOut : OUT STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+
+        -- Temp Register
+            TempEn,TempRst,TempSrc: IN std_logic;
+            -- tempOut : OUT STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+ 
+
         --CLOCKS
             clk: IN std_logic;
             ramClk: IN std_logic;
@@ -41,10 +54,6 @@ ENTITY myArchitecture IS
             busB : INOUT std_logic_vector(wordSize-1 DOWNTO 0); -- OutputBus
             busA : INOUT std_logic_vector(wordSize-1 DOWNTO 0)  -- Bi-Directionl Bus
 			
-		-- IR, Y , TEMP enables and resets.
-			IREn,IRRst,YREn,YRRst,TempEn,,TempRst: IN std_logic;
-		-- OUT SIGNALS FOR Y,Temp and IR.
-			yOut,tempOut,irOut : IN STD_LOGIC;
     );
 
 END myArchitecture;
@@ -78,13 +87,22 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
 
             -- ROM PARAMETERS
                 SIGNAL mircoAR : STD_LOGIC_VECTOR (integer(ceil(log2(real(64))))-1 DOWNTO 0);
-                SIGNAL ramOut : STD_LOGIC_VECTOR (23 DOWNTO 0);
-				
-				
-			-- SPECIAL REGISTERS 
-			IRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,IREn,IRRst,clk,IRout);
-			YRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,YREn,YRRst,clk,YRout);
-			TempRegister : entity work.reg GENERIC MAP(wordSize) PORT MAP(busA,TempEn,TempRst,clk,TempRout);
+                SIGNAL ramOut : STD_LOGIC_VECTOR (23 DOWNTO 0);	
+
+            -- Y Register
+                SIGNAL yOut : STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+
+            -- Temp Register
+                SIGNAL TempOut : STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+
+            -- IR Register
+                SIGNAL IROut : STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+
+
+            -- ALU
+                SIGNAL aluOperation : STD_LOGIC_VECTOR(4 DOWNTO 0); -- ALU OPERATION CODE
+                SIGNAL flagRegReset : STD_LOGIC;
+			
     ------------------------------
 
 
@@ -121,10 +139,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
                 else busB when specialRegDstEnB = '1'
                 else memoryOut;
 
-
-        -- dstDecodMap: entity work.decoder GENERIC MAP(1) PORT MAP (specialRegDstA,specialRegDstEnA,DstDecoded);
-            
-            
+  
         -- Detect Which Register will output on bus
             SrcDecodedA <= "00" when specialRegSrcEnA = '0'
             else "01" when specialRegSrcA = '0'
@@ -140,23 +155,29 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
 
             tristateMapMDR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MDRout,SrcDecodedA(1),busA);
 		
-		-- Special Registers Tri-states 
-	
-			tristateMapIR : entity work.tristate GENERIC MAP(wordSize) PORT MAP(IRout,irOut,busA);
-			
-			tristateMapTemp : entity work.tristate GENERIC MAP (wordSize) PORT MAP(TempRout,tempOut,busA);
-			
-			tristateMapYR : entity work.tristate GENERIC MAP (wordSize) PORT MAP(YRout,yOut,busA);
-           
-		   --   busA <= MARout when SrcDecoded(0) = '1'
-            --   else MDRout when SrcDecoded(1) = '1'
-            --   else (others=>'Z');
-		-- 
         ramMap: entity work.ram GENERIC MAP (wordSize) PORT MAP (ramClk,writeEn,MARout,MDRout,memoryOut);
 
         romMap: entity work.rom GENERIC MAP (24) PORT MAP (mircoAR,ramOut);
 
 ----------------------------------
 
+    -- Y register
+         YRegisterMap : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,YREn,YRRst,clk,yOut);
+         tristateMapYR : entity work.tristate GENERIC MAP (wordSize) PORT MAP(yOut,YSrc,busA);
+       
+    -- IR register
+        IRegisterMap : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,IREn,IRRst,clk,IRout);
+        tristateMapIR : entity work.tristate GENERIC MAP(wordSize) PORT MAP(IRout,IRSrc,busA);
+		
+    -- Temp register
+        TempRegisterMap : entity work.reg GENERIC MAP(wordSize) PORT MAP(busA,TempEn,TempRst,clk,TempOut);
+        tristateMapTemp : entity work.tristate GENERIC MAP (wordSize) PORT MAP(TempOut,TempSrc,busA);
+        
 
-  END amyArchitecture;
+----------------------------------
+
+    -- ALU
+        aluMap : entity work.ALU GENERIC MAP (wordSize) PORT MAP (yOut,busA,aluOperation,clk,flagRegReset,busB);
+
+
+END amyArchitecture;

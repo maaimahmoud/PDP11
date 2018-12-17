@@ -35,7 +35,7 @@ ENTITY ControlWordDecoder IS
                 flagRegEn : OUT STD_LOGIC; --SAVE VALUES IN FLAG REGISTER FROM ALU OPERATION
                 flagRegOut : OUT STD_LOGIC; -- OUT FLAG REGISTER TO BUS A
                 flagRegDstEnA : OUT STD_LOGIC; -- SAVE VALUES IN FLAG REGISTER FROM BUS A
-                aluOperation : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); -- ALU OPERATION CODE
+                aluOperation : OUT STD_LOGIC_VECTOR(4 DOWNTO 0); -- ALU OPERATION CODE
 
             -- IR REGISTER
                 IRRegEn : OUT STD_LOGIC ; -- Save value on BUS A in IR resgister
