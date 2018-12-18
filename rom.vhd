@@ -7,7 +7,7 @@ ENTITY rom IS
 		clk : IN std_logic;
 		we  : IN std_logic; --set when read op
 		address : IN  std_logic_vector(5 DOWNTO 0);
-		dataout : OUT std_logic_vector(23 DOWNTO 0));
+		dataout,dataout2 : OUT std_logic_vector(23 DOWNTO 0));
 END ENTITY rom;
 
 ARCHITECTURE syncromo OF rom IS
@@ -25,6 +25,7 @@ ARCHITECTURE syncromo OF rom IS
 					END IF;
 				END IF;
 		END PROCESS;
+		dataout2 <= rom(to_integer(unsigned(address)));
 	
 END syncromo;
 

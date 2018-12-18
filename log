@@ -1,6 +1,6 @@
-# do {DO FILES\myArchitecture.do}
+# do {DO FILES\finalArchitecture.do}
 # vsim -gui work.myArchitecture 
-# Start time: 09:46:08 on Dec 16,2018
+# Start time: 18:24:15 on Dec 18,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -13,9 +13,121 @@
 # Loading work.reg(areg)
 # Loading work.tristate(a_tristate)
 # Loading work.ram(syncrama)
-# Loading work.rom(arom)
+# Loading work.alu(aalu)
+# Loading work.twocomp(a_twocomp)
+# Loading work.nadder(anadder)
+# Loading work.adder(aadder)
+# Loading work.mux(amux)
+# Loading work.rommodule(rom)
+# Loading work.rom(syncromo)
+# Loading work.reg2(my_reg)
+# Loading work.controlworddecoder(acontrolworddecoder)
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(7) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(6) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(5) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(4) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(3) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(2) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(1) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/regRst(0) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/specialRegRst(1) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /myarchitecture/decoderControlMap/specialRegRst(0) has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: maike  Hostname: ZAGHLOUL  ProcessID: 11808
+#           Attempting to use alternate WLF file "./wlftsec3dj".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftsec3dj
+# ** Warning: (vsim-8780) Forcing /myarchitecture/romReset as root of /myarchitecture/romMap/rst specified in the force.
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/romMap
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F6DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F6DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F6DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F6DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F5DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F5DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F5DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F5DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F4DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F3DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F2DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F1DECODERMAP/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F1DECODERMAP/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F1DECODERMAP/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F1DECODERMAP/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/romMap/ro
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/aluMap/muxMapB
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/aluMap/muxMapA
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /myarchitecture/ramMap
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -66,5 +178,199 @@
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(1)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
-mem save -o C:/Users/maike/Desktop/new.mem -f mti -data binary -addr decimal -startaddress 0 -endaddress 63 -wordsperline 1 /myarchitecture/ramMap/ram
-mem save -o C:/Users/maike/Desktop/new.mem -f mti -data binary -addr decimal -startaddress 0 -endaddress 64 -wordsperline 1 /myarchitecture/romMap/rom
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(1)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(2)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(3)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(4)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(5)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(6)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(7)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /myarchitecture/aluMap/muxMapA
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 2  Instance: /myarchitecture/aluMap/muxMapA
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 2  Instance: /myarchitecture/aluMap/muxMapB
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 2  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 3  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: (vsim-8780) Forcing /myarchitecture/romReset as root of /myarchitecture/romMap/rst specified in the force.
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 5  Instance: /myarchitecture/aluMap/muxMapA
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 5  Instance: /myarchitecture/aluMap/muxMapB
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 5  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 7  Instance: /myarchitecture/aluMap/muxMapA
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 7  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 8  Instance: /myarchitecture/aluMap/muxMap
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 200 ps  Iteration: 9  Instance: /myarchitecture/aluMap/muxMap
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run

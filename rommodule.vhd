@@ -24,7 +24,7 @@ architecture rom of romModule is
 		clk : IN std_logic;
 		we  : IN std_logic; --set when read op
 		address : IN  std_logic_vector(5 DOWNTO 0);
-		dataout : OUT std_logic_vector(23 DOWNTO 0));
+		dataout,dataout2  : OUT std_logic_vector(23 DOWNTO 0));
     END component rom;
 
     signal addr: std_logic_vector(5 downto 0);
@@ -38,10 +38,10 @@ architecture rom of romModule is
 
     begin
 
-        ro:rom port map(clk,en,addr,rom_o);
+        ro:rom port map(clk,en,addr,rom_o,rom_out);
         mar: reg2 port map(clk,rst,en,address_field,addr);
         oring<= rom_o(7 downto 6);
-        rom_out<=rom_o;
+        -- rom_out<=rom_o;
         opcode<=ir(15 downto 12);
         add_mode_src<=ir(11 downto 9);
         add_mode_dst<=ir(5 downto 3);

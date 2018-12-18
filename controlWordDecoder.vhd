@@ -225,7 +225,7 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
             aluOperation <= "01001" when F4DECODED(1) = '1'
             else "01010" when  F4DECODED(2) = '1'
             else "00001" when  F4DECODED(3) = '1'
-            else adderOut when OPCODE="1001"
+            else adderOut when OPCODE="01001"
             else OPCODE;
 
             flagRegEn <= '1' when F4DECODED(4) = '1'

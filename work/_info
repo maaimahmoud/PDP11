@@ -21,11 +21,11 @@ V<ENd3V3g^D5a@@G_0=GWa1
 !s100 SCBf6SiZ`@PUT>N<BzC]W0
 Z6 OV;C;10.5b;63
 32
-Z7 !s110 1545037918
+Z7 !s110 1545144757
 !i10b 1
-Z8 !s108 1545037917.000000
-Z9 !s90 adder.vhd|alu.vhd|and.vhd|controlWordDecoder.vhd|decoder.vhd|mux.vhd|myArchitecture.vhd|mypackage.vhd|nbitAdder.vhd|ram.vhd|reg.vhd|regFile.vhd|rom.vhd|tristatebuffer.vhd|TWOSCOMPLEMENT.vhd|
-Z10 !s107 TWOSCOMPLEMENT.vhd|tristatebuffer.vhd|rom.vhd|regFile.vhd|reg.vhd|ram.vhd|nbitAdder.vhd|mypackage.vhd|myArchitecture.vhd|mux.vhd|decoder.vhd|controlWordDecoder.vhd|and.vhd|alu.vhd|adder.vhd|
+Z8 !s108 1545144757.000000
+Z9 !s90 adder.vhd|alu.vhd|and.vhd|controlWordDecoder.vhd|decoder.vhd|mux.vhd|myArchitecture.vhd|mypackage.vhd|nbitAdder.vhd|ram.vhd|reg.vhd|regFile.vhd|register.vhd|rom.vhd|rommodule.vhd|tristatebuffer.vhd|TWOSCOMPLEMENT.vhd|
+Z10 !s107 TWOSCOMPLEMENT.vhd|tristatebuffer.vhd|rommodule.vhd|rom.vhd|register.vhd|regFile.vhd|reg.vhd|ram.vhd|nbitAdder.vhd|mypackage.vhd|myArchitecture.vhd|mux.vhd|decoder.vhd|controlWordDecoder.vhd|and.vhd|alu.vhd|adder.vhd|
 !i113 1
 Z11 tExplicit 1 CvgOpt 0
 Aaadder
@@ -46,7 +46,7 @@ R10
 !i113 1
 R11
 Ealu
-Z15 w1544816376
+Z15 w1545141315
 Z16 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
 Z17 DPx4 work 4 mine 0 22 YjVIkAj2ZTzelJW44UJHj3
 R1
@@ -56,8 +56,8 @@ Z18 8alu.vhd
 Z19 Falu.vhd
 l0
 L6
-V3IfQBX;XI0Ah4_e:BcD:V3
-!s100 J<l@LmfbA[2bjHO3VJ<eP1
+V?De6XNFAN0i`QYL7IP4?c0
+!s100 5?8QTDbj2hDEz3noDD4Sg2
 R6
 32
 R7
@@ -77,11 +77,11 @@ R16
 R17
 R1
 R2
-Z25 DEx4 work 3 alu 0 22 3IfQBX;XI0Ah4_e:BcD:V3
-l62
-L19
-Z26 V[Sen4C5H5mSLWC^o0Z4o`2
-Z27 !s100 _[GKd]WzaPU1F]3DiJ<?W2
+Z25 DEx4 work 3 alu 0 22 ?De6XNFAN0i`QYL7IP4?c0
+l66
+L21
+Z26 V@9:oF`o]W681lCo?mG_o^0
+Z27 !s100 Ve0[hMdAD5Th`9[<MQgP<0
 R6
 32
 R7
@@ -133,7 +133,7 @@ R10
 !i113 1
 R11
 Econtrolworddecoder
-Z34 w1545037817
+Z34 w1545136288
 R16
 R1
 R2
@@ -142,8 +142,8 @@ Z35 8controlWordDecoder.vhd
 Z36 FcontrolWordDecoder.vhd
 l0
 L6
-V;Tomcb4ifT9PY<4=WOelO0
-!s100 a9Gz<2cIKcZ<6OKBOON`@1
+V0@EJ?lY56Q6Omn:ERM^cB1
+!s100 ;zO^[aPU2GKGz92Ibg46W1
 R6
 32
 R7
@@ -160,11 +160,11 @@ Z37 DEx4 work 7 decoder 0 22 gF3_Y;<m>9SZB]Z?FJ==13
 R16
 R1
 R2
-Z38 DEx4 work 18 controlworddecoder 0 22 ;Tomcb4ifT9PY<4=WOelO0
-l105
-L78
-Z39 V:mZ;WYXHJYC]MJWeQY7MG0
-Z40 !s100 F]?0_O<7n8MRTDcV@gcdb1
+Z38 DEx4 work 18 controlworddecoder 0 22 0@EJ?lY56Q6Omn:ERM^cB1
+l111
+L73
+Z39 VO5DLcFaTWn6OdN;LG4N850
+Z40 !s100 ]1D?jbEah<UP=ZMdKo?Pk1
 R6
 32
 R7
@@ -296,7 +296,7 @@ R10
 !i113 1
 R11
 Emyarchitecture
-Z56 w1545037794
+Z56 w1545144740
 R16
 R1
 R2
@@ -305,8 +305,8 @@ Z57 8myArchitecture.vhd
 Z58 FmyArchitecture.vhd
 l0
 L8
-V6OJd:3XakaiiW[Lh;Yko=3
-!s100 7@1D89Wk4daPoQkUVJBT[0
+VEA[a7MkQVRVjF94`dX;g23
+!s100 V:Dc^I9kV2]j3=WL[c];^0
 R6
 32
 R7
@@ -317,8 +317,9 @@ R10
 !i113 1
 R11
 Aamyarchitecture
+R38
+Z59 DEx4 work 9 rommodule 0 22 NWF9DmFJ<;jghd159OCYI3
 R25
-Z59 DEx4 work 3 rom 0 22 TSDW1W_ISU6eX^HZhPe;11
 Z60 DEx4 work 3 ram 0 22 1eIji_aK1VDCBXP>50Pm21
 Z61 DEx4 work 8 tristate 0 22 AFbk7YTLl0dZW20za@=MC3
 R20
@@ -328,11 +329,11 @@ Z62 DEx4 work 7 regfile 0 22 6;_9BOK4fL0XAF^?:;WjV2
 R16
 R1
 R2
-Z63 DEx4 work 14 myarchitecture 0 22 6OJd:3XakaiiW[Lh;Yko=3
-l109
-L63
-Z64 V^LUWM5Dm7abA8cXOgmdkH0
-Z65 !s100 gD4?adE:nZdg20DDhz@bH2
+Z63 DEx4 work 14 myarchitecture 0 22 EA[a7MkQVRVjF94`dX;g23
+l121
+L17
+VJob_KBghLiUK40L6nTeoS3
+!s100 I[]Mi]aUD1>3YcDl7O:<f3
 R6
 32
 R7
@@ -343,12 +344,12 @@ R10
 !i113 1
 R11
 Enadder
-Z66 w1544815871
+Z64 w1544815871
 R1
 R2
 R3
-Z67 8nbitAdder.vhd
-Z68 FnbitAdder.vhd
+Z65 8nbitAdder.vhd
+Z66 FnbitAdder.vhd
 l0
 L5
 VaBBk5?b@^^e1c`n>7<f0@0
@@ -369,8 +370,8 @@ R2
 R21
 l26
 L20
-Z69 Vb]c?>mT9^_2GPOe9Bze881
-Z70 !s100 zQO0NNR3gDM_M>4?jG96l0
+Z67 Vb]c?>mT9^_2GPOe9Bze881
+Z68 !s100 zQO0NNR3gDM_M>4?jG96l0
 R6
 32
 R7
@@ -381,13 +382,13 @@ R10
 !i113 1
 R11
 Eram
-Z71 w1544822219
+Z69 w1544822219
 R22
 R1
 R2
 R3
-Z72 8ram.vhd
-Z73 Fram.vhd
+Z70 8ram.vhd
+Z71 Fram.vhd
 l0
 L5
 V1eIji_aK1VDCBXP>50Pm21
@@ -408,8 +409,8 @@ R2
 R60
 l19
 L15
-Z74 Vi[WIGV;`]E98SZ@WYicCl3
-Z75 !s100 V7jLgB:5`:fZ3;g;NQMhR1
+Z72 Vi[WIGV;`]E98SZ@WYicCl3
+Z73 !s100 V7jLgB:5`:fZ3;g;NQMhR1
 R6
 32
 R7
@@ -420,13 +421,13 @@ R10
 !i113 1
 R11
 Ereg
-Z76 w1544601501
+Z74 w1544601501
 R16
 R1
 R2
 R3
-Z77 8reg.vhd
-Z78 Freg.vhd
+Z75 8reg.vhd
+Z76 Freg.vhd
 l0
 L7
 V2J>G9LYZZ_EP^cXW2AozU3
@@ -447,8 +448,65 @@ R2
 R20
 l23
 L21
-Z79 VHPKYeI1_9?Z0H@OO=Q=LH2
-Z80 !s100 fMzf?0jC?`QjMICfdd`3^0
+Z77 VHPKYeI1_9?Z0H@OO=Q=LH2
+Z78 !s100 fMzf?0jC?`QjMICfdd`3^0
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+Amy_reg
+R1
+R2
+DEx4 work 3 reg 0 22 VhlRZALMQf^[=Kng0Q]7z0
+l11
+L10
+V4nAlcoT_4TX6A6F<?XZRU3
+!s100 LFh_>F8C9IL9VT7@WKV9I1
+R6
+32
+!s110 1545041091
+!i10b 1
+!s108 1545041091.000000
+R9
+R10
+!i113 1
+R11
+Z79 Fregister.vhd
+w1545038344
+Z80 8register.vhd
+Ereg2
+Z81 w1545065982
+R1
+R2
+R3
+R80
+R79
+l0
+L3
+VzRcRID95EhHg<1g0WK8i?3
+!s100 OWnGXFSZ6jazJjTF_7ln71
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+Amy_reg
+R1
+R2
+Z82 DEx4 work 4 reg2 0 22 zRcRID95EhHg<1g0WK8i?3
+l11
+L10
+Z83 VV8A0HaHP:RHkJeIC0ZKI92
+Z84 !s100 ODZPM?6=_:ofN;e1EXCTh0
 R6
 32
 R7
@@ -459,15 +517,15 @@ R10
 !i113 1
 R11
 Eregfile
-Z81 w1544815924
+Z85 w1544815924
 R22
 R17
 R16
 R1
 R2
 R3
-Z82 8regFile.vhd
-Z83 FregFile.vhd
+Z86 8regFile.vhd
+Z87 FregFile.vhd
 l0
 L11
 V6;_9BOK4fL0XAF^?:;WjV2
@@ -493,8 +551,8 @@ R2
 R62
 l49
 L29
-Z84 VkORK?<@X>SnGRdGMOSReh2
-Z85 !s100 0`H8Wg0WFIl<?bi]`8J9R0
+Z88 VkORK?<@X>SnGRdGMOSReh2
+Z89 !s100 0`H8Wg0WFIl<?bi]`8J9R0
 R6
 32
 R7
@@ -505,18 +563,35 @@ R10
 !i113 1
 R11
 Erom
-Z86 w1544946202
-R16
+Z90 w1545123299
 R22
 R1
 R2
 R3
-Z87 8rom.vhd
-Z88 From.vhd
+Z91 8rom.vhd
+Z92 From.vhd
 l0
-L8
-VTSDW1W_ISU6eX^HZhPe;11
-!s100 ^M9^6=W=29cJjZQbQ>KgY0
+L5
+VRh?c[lJVEP@;[ZYEJFJne2
+!s100 aoTzOl1lm_NYVe=SflkZa0
+R6
+32
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+Asyncromo
+R22
+R1
+R2
+Z93 DEx4 work 3 rom 0 22 Rh?c[lJVEP@;[ZYEJFJne2
+l19
+L13
+Z94 V<^>8FIQ<QnQkea;;Id0gi2
+Z95 !s100 DlN=;C_[R1]A=DSh:0CEW1
 R6
 32
 R7
@@ -531,11 +606,33 @@ R16
 R22
 R1
 R2
-R59
+DEx4 work 3 rom 0 22 TSDW1W_ISU6eX^HZhPe;11
 l28
 L22
-Z89 V]Tcom`hDH`ZW<Vc0c6S2@3
-Z90 !s100 1`k8eXBT;T6fYVElEb5kD0
+V]Tcom`hDH`ZW<Vc0c6S2@3
+!s100 1`k8eXBT;T6fYVElEb5kD0
+R6
+32
+!s110 1545037918
+!i10b 1
+!s108 1545037917.000000
+!s90 adder.vhd|alu.vhd|and.vhd|controlWordDecoder.vhd|decoder.vhd|mux.vhd|myArchitecture.vhd|mypackage.vhd|nbitAdder.vhd|ram.vhd|reg.vhd|regFile.vhd|rom.vhd|tristatebuffer.vhd|TWOSCOMPLEMENT.vhd|
+!s107 TWOSCOMPLEMENT.vhd|tristatebuffer.vhd|rom.vhd|regFile.vhd|reg.vhd|ram.vhd|nbitAdder.vhd|mypackage.vhd|myArchitecture.vhd|mux.vhd|decoder.vhd|controlWordDecoder.vhd|and.vhd|alu.vhd|adder.vhd|
+!i113 1
+R11
+w1544946202
+Erommodule
+Z96 w1545123244
+R22
+R1
+R2
+R3
+Z97 8rommodule.vhd
+Z98 Frommodule.vhd
+l0
+L6
+VNWF9DmFJ<;jghd159OCYI3
+!s100 bEPMh>BB2?5S2ACWJlAY=1
 R6
 32
 R7
@@ -545,14 +642,32 @@ R9
 R10
 !i113 1
 R11
+Arom
+R22
+R1
+R2
+R59
+l39
+L14
+Z99 VVez^5V@KTELQJRCHlD0EU3
+Z100 !s100 Z1@o<QCa0SNIz6]>;WYoP2
+R6
+32
+Z101 !s110 1545144758
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
 Especialreg
-Z91 w1544816078
+Z102 w1544816078
 R16
 R1
 R2
 R3
-Z92 8specialReg.vhd
-Z93 FspecialReg.vhd
+Z103 8specialReg.vhd
+Z104 FspecialReg.vhd
 l0
 L6
 VDlbdHU97JF?dU:OBLC;l71
@@ -562,8 +677,8 @@ R6
 !s110 1544817178
 !i10b 1
 !s108 1544817177.000000
-Z94 !s90 adder.vhd|alu.vhd|and.vhd|decoder.vhd|mux.vhd|myArchitecture.vhd|mypackage.vhd|nbitAdder.vhd|ram.vhd|reg.vhd|regFile.vhd|rom.vhd|specialReg.vhd|tristatebuffer.vhd|TWOSCOMPLEMENT.vhd|
-Z95 !s107 TWOSCOMPLEMENT.vhd|tristatebuffer.vhd|specialReg.vhd|rom.vhd|regFile.vhd|reg.vhd|ram.vhd|nbitAdder.vhd|mypackage.vhd|myArchitecture.vhd|mux.vhd|decoder.vhd|and.vhd|alu.vhd|adder.vhd|
+Z105 !s90 adder.vhd|alu.vhd|and.vhd|decoder.vhd|mux.vhd|myArchitecture.vhd|mypackage.vhd|nbitAdder.vhd|ram.vhd|reg.vhd|regFile.vhd|rom.vhd|specialReg.vhd|tristatebuffer.vhd|TWOSCOMPLEMENT.vhd|
+Z106 !s107 TWOSCOMPLEMENT.vhd|tristatebuffer.vhd|specialReg.vhd|rom.vhd|regFile.vhd|reg.vhd|ram.vhd|nbitAdder.vhd|mypackage.vhd|myArchitecture.vhd|mux.vhd|decoder.vhd|and.vhd|alu.vhd|adder.vhd|
 !i113 1
 R11
 Aaspecialreg
@@ -580,25 +695,25 @@ R6
 !s110 1544814261
 !i10b 1
 !s108 1544814261.000000
-R94
-R95
+R105
+R106
 !i113 1
 R11
 Etristate
-Z96 w1544615957
+Z107 w1544615957
 R16
 R1
 R2
 R3
-Z97 8tristatebuffer.vhd
-Z98 Ftristatebuffer.vhd
+Z108 8tristatebuffer.vhd
+Z109 Ftristatebuffer.vhd
 l0
 L7
 VAFbk7YTLl0dZW20za@=MC3
 !s100 Fj0==f=?3iDoW`0AFCFoc2
 R6
 32
-R7
+R101
 !i10b 1
 R8
 R9
@@ -612,11 +727,11 @@ R2
 R61
 l22
 L20
-Z99 VfXz53chECz6537oKf_KS33
-Z100 !s100 oRM;2n9ii=`_ElGgALC>31
+Z110 VfXz53chECz6537oKf_KS33
+Z111 !s100 oRM;2n9ii=`_ElGgALC>31
 R6
 32
-R7
+R101
 !i10b 1
 R8
 R9
@@ -624,19 +739,19 @@ R10
 !i113 1
 R11
 Etwocomp
-Z101 w1544693605
+Z112 w1544693605
 R1
 R2
 R3
-Z102 8TWOSCOMPLEMENT.vhd
-Z103 FTWOSCOMPLEMENT.vhd
+Z113 8TWOSCOMPLEMENT.vhd
+Z114 FTWOSCOMPLEMENT.vhd
 l0
 L6
 V<g9khHbc791741kPz4g:C2
 !s100 zJ]j9Sl7b3OO]3Z[z;_em2
 R6
 32
-R7
+R101
 !i10b 1
 R8
 R9
@@ -649,11 +764,11 @@ R2
 R24
 l31
 L15
-Z104 V1WAN1[4Z[DL[HjdE_=[Zo2
-Z105 !s100 L>Mf^mQ@JNV`B4goT[DVQ3
+Z115 V1WAN1[4Z[DL[HjdE_=[Zo2
+Z116 !s100 L>Mf^mQ@JNV`B4goT[DVQ3
 R6
 32
-R7
+R101
 !i10b 1
 R8
 R9

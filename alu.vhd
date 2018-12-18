@@ -135,7 +135,7 @@ BEGIN
 
     adderMap: entity work.nAdder generic map(wordSize) PORT MAP(inA,inB,inC,adderOut,adderCarryOut);  
 
-    muxMap : entity work.MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=> A, -- A
+    muxMap : entity work.MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=> B, -- A
                                                     inputs(1)=>adderOut, -- A+B
                                                     inputs(2)=>adderOut, -- A+B+carry
                                                     inputs(3)=>adderOut, -- A-B
@@ -159,7 +159,6 @@ BEGIN
                                                     output=>aluOutput);
                                                   
   busB <= aluOutput;
--- B <= 
 
   Z <= '1' when aluOutput = x"0000"
   else '0';
@@ -167,7 +166,8 @@ BEGIN
   N <= '1' when aluOutput(wordSize-1) = '1'
   else '0';
 
-  C <= adderCarryOut;
+  C <= '1' when ( adderCarryOut = '1' OR (inB(wordSize-1) ='1' AND adderOut(wordSize-1) = '1')  OR (inB(wordSize-1) ='0' AND adderOut(wordSize-1) = '1') )
+  else '0';
 
   P <= '1' when aluOutput(0)= '0'
   else '0';

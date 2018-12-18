@@ -43,7 +43,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
     -- IR Register
         SIGNAL IREn,IRRst,IRSrc : STD_LOGIC;
         SIGNAL IRAddressOut : STD_LOGIC;
-        -- irOut : OUT STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
+        SIGNAL addressFieldIR: STD_LOGIC_VECTOR (wordSize-1 DOWNTO 0);
         SIGNAL endInstruction : STD_LOGIC;
 
     -- Y Register
@@ -162,7 +162,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
         -- MAR and MDR registers
             MARMap: entity work.reg GENERIC MAP(wordSize) PORT MAP  (writingBusMAR,enMAR,specialRegRst(0),clk,MARout );
 
-            MDRMap: entity work.reg GENERIC MAP(wordSize) PORT MAP  (writingBusMDR,enMDR,specialRegRst(1),clk,MDRout );
+            MDRMap: entity work.reg GENERIC MAP(wordSize) PORT MAP  (writingBusMDR,enMDR,specialRegRst(1),ramClk,MDRout );
         
         -- Registers OUT to BUS A
             tristateMapMAR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MARout,SrcDecodedA(0),busA);
@@ -182,7 +182,11 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
     -- IR register
         IRegisterMap : entity work.reg GENERIC MAP(wordSize) PORT MAP (busA,IREn,IRRst,clk,IRout);
         tristateMapIR : entity work.tristate GENERIC MAP(wordSize) PORT MAP(IRout,IRSrc,busA);
-		
+        -- Out Address-field of IR to bus A
+            addressFieldIR(15 DOWNTO 7) <= (OTHERS=>IRout(7));
+            addressFieldIR(6 DOWNTO 0) <= IRout(6 DOWNTO 0);
+            tristateMapIRaddress : entity work.tristate GENERIC MAP(wordSize) PORT MAP (addressFieldIR,IRAddressOut,busA);
+        
     -- Temp register
         TempRegisterMap : entity work.reg GENERIC MAP(wordSize) PORT MAP(busA,TempEn,TempRst,clk,TempOut);
         tristateMapTemp : entity work.tristate GENERIC MAP (wordSize) PORT MAP(TempOut,TempSrc,busA);
