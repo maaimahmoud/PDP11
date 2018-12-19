@@ -14,12 +14,12 @@ END ENTITY ram;
 
 ARCHITECTURE syncrama OF ram IS
 
-	TYPE ram_type IS ARRAY(0 TO 63) OF std_logic_vector(m-1 DOWNTO 0);
+	TYPE ram_type IS ARRAY(0 TO 2000) OF std_logic_vector(m-1 DOWNTO 0);
 	SIGNAL ram : ram_type ;
 	BEGIN
 		PROCESS(clk) IS
 			BEGIN
-				IF rising_edge(clk) THEN  
+				IF falling_edge(clk) THEN  
 					IF en = '1' THEN
 						ram(to_integer(unsigned(address))) <= datain;
 					END IF;

@@ -201,7 +201,7 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
                      specialRegSrcA <= '1' when F2DECODED(4)='1' ;
 
 
-            clkEn <= F2DECODED(5);
+            clkEn <= NOT F2DECODED(5);
         ------------------------------------------------------------------------------------------------------------------------
         -- F3 Decode
             specialRegDstEnA <= (F3DECODED(1) OR F3DECODED(3)); -- MARinA OR MDRinA

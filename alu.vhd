@@ -135,26 +135,26 @@ BEGIN
 
     adderMap: entity work.nAdder generic map(wordSize) PORT MAP(inA,inB,inC,adderOut,adderCarryOut);  
 
-    muxMap : entity work.MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=> B, -- A
-                                                    inputs(1)=>adderOut, -- A+B
-                                                    inputs(2)=>adderOut, -- A+B+carry
-                                                    inputs(3)=>adderOut, -- A-B
-                                                    inputs(4)=>adderOut, -- A-B-carry
-                                                    inputs(5)=>AandB, -- A AND B
-                                                    inputs(6)=>AorB, -- A OR B
-                                                    inputs(7)=>AxnorB, -- A XNOR B
-                                                    inputs(8)=>adderOut, -- A-B
-                                                    inputs(9)=>adderOut, -- A + 1
-                                                    inputs(10)=>adderOut, -- A - 1
-                                                    inputs(11)=>x"0000", -- 0
-                                                    inputs(12)=>notA, -- NOT A
-                                                    inputs(13)=>SHROUT,-- SHROUT
-                                                    inputs(14)=>ROROUT,-- ROROUT
-                                                    inputs(15)=>RRCOUT, -- RRCOUT
-                                                    inputs(16)=>ASROUT, -- ASROUT
-                                                    inputs(17)=>LSLOUT, -- LSLOUT
-                                                    inputs(18)=>ROLOUT, -- ROLOUT
-                                                    inputs(19)=>ROCOUT, -- ROCOUT
+    muxMap : entity work.MUX GENERIC MAP(20,wordSize) PORT MAP (inputs(0)=> B, -- A 00000
+                                                    inputs(1)=>adderOut, -- A+B 00001
+                                                    inputs(2)=>adderOut, -- A+B+carry 00010
+                                                    inputs(3)=>adderOut, -- A-B 00011
+                                                    inputs(4)=>adderOut, -- A-B-carry 00100
+                                                    inputs(5)=>AandB, -- A AND B 00101
+                                                    inputs(6)=>AorB, -- A OR B 00110
+                                                    inputs(7)=>AxnorB, -- A XNOR B  00111
+                                                    inputs(8)=>adderOut, -- A-B 01000
+                                                    inputs(9)=>adderOut, -- A + 1 01001
+                                                    inputs(10)=>adderOut, -- A - 1 01010
+                                                    inputs(11)=>x"0000", -- 0 01011
+                                                    inputs(12)=>notA, -- NOT A 01100
+                                                    inputs(13)=>SHROUT,-- SHROUT 01101
+                                                    inputs(14)=>ROROUT,-- ROROUT 01110
+                                                    inputs(15)=>RRCOUT, -- RRCOUT 01111
+                                                    inputs(16)=>ASROUT, -- ASROUT 10000 C=A[0]
+                                                    inputs(17)=>LSLOUT, -- LSLOUT 10001
+                                                    inputs(18)=>ROLOUT, -- ROLOUT 10010
+                                                    inputs(19)=>ROCOUT, -- ROCOUT 10011
                                                     selectionLines=>selectionLines,
                                                     output=>aluOutput);
                                                   
@@ -166,11 +166,15 @@ BEGIN
   N <= '1' when aluOutput(wordSize-1) = '1'
   else '0';
 
-  C <= '1' when ( adderCarryOut = '1' OR (inB(wordSize-1) ='1' AND adderOut(wordSize-1) = '1')  OR (inB(wordSize-1) ='0' AND adderOut(wordSize-1) = '1') )
+  C <= '0' when (adderCarryOut = '1' AND inA(wordSize-1) ='0' AND inB(wordSize-1) ='1')
+  else '1' when (adderCarryOut = '1' OR (inB(wordSize-1) ='1' AND adderOut(wordSize-1) = '1')  OR (inB(wordSize-1) ='0' AND adderOut(wordSize-1) = '1') )
   else '0';
-
-  P <= '1' when aluOutput(0)= '0'
-  else '0';
+  
+  P <= adderOut(15) XOR adderOut(14) XOR adderOut(13) XOR adderOut(12)
+        XOR adderOut(11) XOR adderOut(10) XOR adderOut(9) XOR adderOut(8)
+        XOR adderOut(7) XOR adderOut(6) XOR adderOut(5) XOR adderOut(4)
+        XOR adderOut(3) XOR adderOut(2) XOR adderOut(1) XOR adderOut(0) ;
+--   else '0';
 
   O <= '1' when (inA(wordSize-1)='0' and inB(wordSize-1)='0' and adderOut(wordSize-1)='1') or (inA(wordSize-1)='1' and inB(wordSize-1)='1' and adderOut(wordSize-1)='0' )
   else '0';

@@ -16,6 +16,7 @@ END myArchitecture;
 
 ARCHITECTURE amyArchitecture OF myArchitecture IS
 
+
     -- REGISTERS
         -- BUS WRITE TO REGISTER
         SIGNAL regDstB,regDstA: STD_LOGIC_VECTOR(regNum-1 DOWNTO 0); -- Detect which register that bus will write value to
@@ -39,6 +40,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
 
    -- READ AND WRITE FROM/TO MEMORY
         SIGNAL writeEn,readEn :  STD_LOGIC;
+        -- SIGNAL ramInput : STD_LOGIC_VECTOR(wordSize-1 DONWTO 0);
 
     -- IR Register
         SIGNAL IREn,IRRst,IRSrc : STD_LOGIC;
@@ -91,10 +93,6 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
                 SIGNAL enMAR : STD_LOGIC;
                 SIGNAL enMDR : STD_LOGIC;
 
-            -- ROM PARAMETERS
-                SIGNAL mircoAR : STD_LOGIC_VECTOR (integer(ceil(log2(real(64))))-1 DOWNTO 0);
-                -- SIGNAL ramOut : STD_LOGIC_VECTOR (23 DOWNTO 0);	
-
             -- Y Register
                 SIGNAL yOut : STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0);
 
@@ -119,6 +117,10 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
 
 
   BEGIN
+
+-- Stop Clk if ClkEnable Equals Zero
+    -- clk <= clk AND clkEn;
+    -- clkMap : entity work.clock PORT MAP (clkEn,'0',clk);
 
 --   REGISTER FILE
 
@@ -168,10 +170,11 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
             tristateMapMAR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MARout,SrcDecodedA(0),busA);
 
             tristateMapMDR: entity work.tristate GENERIC MAP(wordSize) PORT MAP (MDRout,SrcDecodedA(1),busA);
-		
-        ramMap: entity work.ram GENERIC MAP (wordSize) PORT MAP (ramClk,writeEn,MARout,MDRout,memoryOut);
 
-        -- romMap: entity work.rom GENERIC MAP (24) PORT MAP (mircoAR,ramOut);
+            -- ramInput <= writingBusMDR
+
+            ramMap: entity work.ram GENERIC MAP (wordSize) PORT MAP (ramClk,writeEn,MARout,writingBusMDR,memoryOut);
+
 
 ----------------------------------
 
