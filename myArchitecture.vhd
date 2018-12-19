@@ -62,6 +62,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
         SIGNAL flagRegDstEnA: STD_LOGIC;
 
     --CLOCKS
+        SIGNAL Sysclk: std_logic;
         SIGNAL clk: std_logic;
         SIGNAL ramClk: std_logic;
         SIGNAL clkEn : STD_LOGIC;
@@ -119,7 +120,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
   BEGIN
 
 -- Stop Clk if ClkEnable Equals Zero
-    -- clk <= clk AND clkEn;
+    clk <= Sysclk AND clkEn;
     -- clkMap : entity work.clock PORT MAP (clkEn,'0',clk);
 
 --   REGISTER FILE
