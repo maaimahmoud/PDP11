@@ -21,9 +21,9 @@ end entity ALU;
 architecture aALU of ALU is
 
 
-    SIGNAL flagRegT:std_logic_vector( 4 downto 0) ;
-    SIGNAL flagRegFinalT:std_logic_vector( 4 downto 0) ;
-    SIGNAL flagRegOut:std_logic_vector(4 downto 0) ;
+    SIGNAL flagRegT:std_logic_vector( wordSize-1 downto 0) ;
+    SIGNAL flagRegFinalT:std_logic_vector(wordSize-1 downto 0) ;
+    SIGNAL flagRegOut:std_logic_vector(wordSize-1 downto 0) ;
 
     -- SIGNAL flagRegEn: std_logic ;
 
@@ -73,11 +73,11 @@ BEGIN
 
     SHROUT <= '0' & A(wordSize-1 downto 1);
     ROROUT <= A(0) & A(wordSize-1 downto 1);
-    RRCOUT <= flagRegT(3) & A (wordSize-1 downto 1);
+    RRCOUT <= flagRegOut(3) & A (wordSize-1 downto 1);
     ASROUT <= A(wordSize-1) & A(wordSize-1 downto 1);
     LSLOUT <= A(wordSize-2 downto 0) & '0';
     ROLOUT <= A(wordSize-2 downto 0) & A(wordSize-1);
-    ROCOUT <= A(wordSize-2 downto 0) & flagRegT(3) ;
+    ROCOUT <= A(wordSize-2 downto 0) & flagRegOut(3) ;
 
     -- barMapA: twocomp generic map(wordSize) port map (A,Abar);
 
@@ -166,9 +166,14 @@ BEGIN
   N <= '1' when aluOutput(wordSize-1) = '1'
   else '0';
 
-  C <= '0' when (adderCarryOut = '1' AND inA(wordSize-1) ='0' AND inB(wordSize-1) ='1')
-  else '1' when (adderCarryOut = '1' OR (inB(wordSize-1) ='1' AND adderOut(wordSize-1) = '1')  OR (inB(wordSize-1) ='0' AND adderOut(wordSize-1) = '1') )
-  else '0';
+
+C <= A(0) when (selectionLines="01101" OR selectionLines="01110" OR selectionLines="01111" OR selectionLines = "10000" )
+else A(wordSize-1) when (selectionLines = "10001" OR selectionLines="10010" OR selectionLines="10011")
+else ( (adderCarryOut OR B(wordSize-1) ) AND (NOTA(wordSize-1))   ) OR (adderCarryOut AND B(wordSize-1) AND A(wordSize-1) )  ;-- XOR (operand1_sign XOR operand2_sign)
+
+
+
+    -- C <= ((adderCarryOut OR B(wordSize-1) ) AND (NOTA(wordSize-1) ) ) OR (adderCarryOut AND B(wordSize-1 ) AND A(wordSize-1) );
   
   P <= adderOut(15) XOR adderOut(14) XOR adderOut(13) XOR adderOut(12)
         XOR adderOut(11) XOR adderOut(10) XOR adderOut(9) XOR adderOut(8)
@@ -180,24 +185,24 @@ BEGIN
   else '0';
 
 
-  -- flagRegT <= (wordsize-1=> N , wordsize-2=> O, wordsize-3=> Z,wordsize-4=> C, wordsize-5=> P);
+  flagRegT <= (0=> N , 1=> O, 2=> Z, 3=> C, 4=> P , OTHERS=>('0') );
 
-  flagRegT(0) <= N;
-  flagRegT(1) <= O;
-  flagRegT(2) <= Z;
-  flagRegT(3) <= C;
-  flagRegT(4) <= P;
+--   flagRegT(0) <= N;
+--   flagRegT(1) <= O;
+--   flagRegT(2) <= Z;
+--   flagRegT(3) <= C;
+--   flagRegT(4) <= P;
 
 --   flagRegEn <= '1';
 
-    flagRegFinalT <= B when flagRegDstEnA='1'
+    flagRegFinalT <= A when flagRegDstEnA='1'
     else flagRegT;
 
-  flagRegMap: entity work.reg GENERIC MAP(5) PORT MAP(flagRegFinalT,flagRegEn,resetFlag,clk,flagRegOut );
+  flagRegMap: entity work.reg GENERIC MAP(wordSize) PORT MAP(flagRegFinalT,flagRegEn,resetFlag,clk,flagRegOut );
 
     A <= flagRegOut when flagRegSrc = '1'
     else (OTHERS=>'Z');
 
-    flagRegValue <= flagRegOut;
+    flagRegValue <= flagRegOut(4 DOWNTO 0);
 
 end architecture;

@@ -115,7 +115,12 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
                 SIGNAL romOut : STD_LOGIC_VECTOR(23 DOWNTO 0);
 			
     ------------------------------
-
+        -- ADDRESS SAVED IN HARDWARE
+                 SIGNAL ADDRESS: STD_LOGIC_VECTOR(wordSize-1 DOWNTO 0):= "0000001111101000";
+                 SIGNAL systemForcedint : STD_LOGIC;
+                 SIGNAL int :STD_LOGIC;
+                 SIGNAL endINTT :STD_LOGIC;
+                 SIGNAL addressOut : STD_LOGIC;
 
   BEGIN
 
@@ -123,6 +128,12 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
     clk <= Sysclk AND clkEn;
     -- clkMap : entity work.clock PORT MAP (clkEn,'0',clk);
 
+    INTTriStateMap : entity work.tristate GENERIC MAP(wordSize) PORT MAP (ADDRESS,addressOut,busA);
+
+    int <= '0' when endINTT = '1'
+    else '1' when systemForcedint='1';
+
+    
 --   REGISTER FILE
 
       regFileMap: entity work.regFile GENERIC MAP(regNum,wordSize) PORT MAP  (regdstB,regdstEnB ,regsrcA,regdstA,regsrcEnA,regdstEnA,regrst,clk,busB,busA);
@@ -205,7 +216,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
 ----------------------------------
 
     -- ROM
-        romMap : entity work.romModule GENERIC MAP(wordSize) PORT MAP (clk,romReset,'1',flagRegValue(3),flagRegValue(2),IRout,romOut);
+        romMap : entity work.romModule GENERIC MAP(wordSize) PORT MAP (clk,romReset,'1',flagRegValue(3),flagRegValue(2),int,IRout,romOut);
 
 
     -- Decoder for control word
@@ -216,7 +227,7 @@ ARCHITECTURE amyArchitecture OF myArchitecture IS
         IRAddressOut,regDstB,regDstA,regDstEnB,regDstEnA,
         regSrcA,regSrcEnA,specialRegDstA,specialRegDstB,
         specialRegDstEnA,specialRegDstEnB,specialRegSrcA,
-        specialRegSrcEnA,regRst,specialRegRst,writeEn,readEn);
+        specialRegSrcEnA,regRst,specialRegRst,writeEn,readEn,addressOut,endINTT);
 
 ----------------------------------      
 END amyArchitecture;

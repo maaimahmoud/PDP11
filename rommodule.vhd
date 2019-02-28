@@ -5,7 +5,7 @@ USE IEEE.numeric_std.all;
 
 entity romModule is
 	generic(n:integer :=16);
-	port(clk,rst,en,C,Z: in std_logic; --only need carry and Z flag for branching
+	port(clk,rst,en,C,Z,I: in std_logic; --only need carry and Z flag for branching
         ir: in std_logic_vector(n-1 downto 0);
         rom_out: out std_logic_vector(23 downto 0));
 end romModule;
@@ -58,6 +58,7 @@ architecture rom of romModule is
                 rom_o(5 downto 2)&"00" when oring="11" else   
                 (others=>'0') when rom_o(17 downto 15)="111" and ((op_type="0001"and Z='0') or (op_type="0010"and Z='1') or (op_type="0011" and C='1') or (op_type="0100" and Z='0' and C='1') or (op_type="0101" and C='0') or(op_type="0110"and C='0' and Z='0') )  --branch condition not met  
                 else 
+                "111101" when I='1' and rom_o(5 downto 0)="000000" else
                 rom_o(5 downto 0);
 
 

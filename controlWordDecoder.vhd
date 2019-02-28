@@ -61,7 +61,11 @@ ENTITY ControlWordDecoder IS
                 specialRegRst:OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
 
             -- READ AND WRITE FROM/TO MEMORY
-                writeEn,readEn : OUT STD_LOGIC
+                writeEn,readEn : OUT STD_LOGIC;
+
+            -- INTERRUPT
+                addressOut : OUT STD_LOGIC;
+                endINT : OUT STD_LOGIC
 
   
     );
@@ -94,12 +98,6 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
             SIGNAL F6DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
             -- SIGNAL F7DECODED: STD_LOGIC_VECTOR (3 DOWNTO 0);
             
-
-
-        -- ADDRESS SAVED IN HARDWARE
-
-            SIGNAL ADDRESS: STD_LOGIC_VECTOR(6 DOWNTO 0):= "1011101";
-
         -- ALU PARAMETERS
             SIGNAL aluUsed : STD_LOGIC;
             SIGNAL adderOut : STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -202,6 +200,8 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
 
 
             clkEn <= NOT F2DECODED(5);
+
+            endINT <= F2DECODED(6);
         ------------------------------------------------------------------------------------------------------------------------
         -- F3 Decode
             specialRegDstEnA <= (F3DECODED(1) OR F3DECODED(3)); -- MARinA OR MDRinA
@@ -228,12 +228,14 @@ ARCHITECTURE aControlWordDecoder OF ControlWordDecoder IS
             else adderOut when OPCODE="01001"
             else OPCODE;
 
-            flagRegEn <= '1' when F4DECODED(4) = '1'
+            flagRegEn <= '1' when (F4DECODED(4) = '1' OR F4DECODED(6) = '1')
             else '0';
 
             flagRegOut <= F4DECODED(5);
 
             flagRegDstEnA <= F4DECODED(6);
+
+            addressOut <= F4DECODED(7);
 
         ------------------------------------------------------------------------------------------------------------------------       
         -- F5 Decode

@@ -1,6 +1,6 @@
 # do {DO FILES\finalArchitecture.do}
 # vsim -gui work.myArchitecture 
-# Start time: 16:32:28 on Dec 19,2018
+# Start time: 13:36:18 on Dec 20,2018
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -8,10 +8,10 @@
 # Loading work.mine(body)
 # Loading ieee.numeric_std(body)
 # Loading work.myarchitecture(amyarchitecture)
+# Loading work.tristate(a_tristate)
 # Loading work.regfile(aregfile)
 # Loading work.decoder(adecoder)
 # Loading work.reg(areg)
-# Loading work.tristate(a_tristate)
 # Loading work.ram(syncrama)
 # Loading work.alu(aalu)
 # Loading work.twocomp(a_twocomp)
@@ -44,10 +44,11 @@
 # This port will contribute value (U) to the signal network.
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: maike  Hostname: ZAGHLOUL  ProcessID: 11808
-#           Attempting to use alternate WLF file "./wlftc04gwv".
+#           Attempting to use alternate WLF file "./wlftkgh7be".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftc04gwv
+#           Using alternate file: ./wlftkgh7be
 # ** Warning: (vsim-8780) Forcing /myarchitecture/romReset as root of /myarchitecture/romMap/rst specified in the force.
+# ** Warning: (vsim-8780) Forcing /myarchitecture/busA as root of /myarchitecture/regFileMap/busA specified in the force.
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/decoderControlMap/F6DECODERMAP/loop1(3)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -147,22 +148,6 @@
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(0)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(7)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(6)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(5)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(4)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(3)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(2)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(1)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(0)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(7)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(6)
@@ -178,6 +163,8 @@
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(1)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /myarchitecture/aluMap/muxMapA
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/srcDecodMap/loop1(0)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -210,24 +197,6 @@
 #    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(6)
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodBMap/loop1(7)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(0)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(1)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(2)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(3)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(4)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(5)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(6)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Region: /myarchitecture/regFileMap/dstDecodAMap/loop1(7)
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ps  Iteration: 1  Instance: /myarchitecture/aluMap/muxMapA
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 1  Instance: /myarchitecture/aluMap/muxMap
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
@@ -283,102 +252,5 @@ run
 run
 run
 run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-run
-# End time: 16:36:39 on Dec 19,2018, Elapsed time: 0:04:11
-# Errors: 0, Warnings: 116
+# End time: 13:37:42 on Dec 20,2018, Elapsed time: 0:01:24
+# Errors: 0, Warnings: 101
